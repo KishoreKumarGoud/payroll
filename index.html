@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Payroll System</h1>
+
+        <!-- Form to add an employee -->
+        <div class="form-container">
+            <h2>Add Employee</h2>
+            <form id="addEmployeeForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="id">ID:</label>
+                <input type="number" id="id" name="id" required>
+                <label for="employeeType">Employee Type:</label>
+                <select id="employeeType" name="employeeType" onchange="toggleSalaryFields()">
+                    <option value="fullTime">Full-Time</option>
+                    <option value="partTime">Part-Time</option>
+                </select>
+                <div id="fullTimeFields">
+                    <label for="monthlySalary">Monthly Salary (Full-Time):</label>
+                    <input type="number" step="0.01" id="monthlySalary" name="monthlySalary">
+                </div>
+                <div id="partTimeFields" style="display: none;">
+                    <label for="hoursWorked">Hours Worked (Part-Time):</label>
+                    <input type="number" id="hoursWorked" name="hoursWorked">
+                    <label for="hourlyRate">Hourly Rate (Part-Time):</label>
+                    <input type="number" step="0.01" id="hourlyRate" name="hourlyRate">
+                </div>
+                <button type="button" onclick="addEmployee()">Add Employee</button>
+            </form>
+        </div>
+
+        <!-- Form to remove an employee -->
+        <div class="form-container">
+            <h2>Remove Employee</h2>
+            <form id="removeEmployeeForm">
+                <label for="removeId">ID:</label>
+                <input type="number" id="removeId" name="removeId" required>
+                <button type="button" onclick="removeEmployee()">Remove Employee</button>
+            </form>
+        </div>
+
+        <!-- Display employee details -->
+        <div class="form-container">
+            <h2>Employee Lists</h2>
+            <div class="employee-list">
+                <h3>Full-Time Employees</h3>
+                <ul id="fullTimeList">
+                    <!-- Full-time employees will be added here -->
+                </ul>
+            </div>
+            <div class="employee-list">
+                <h3>Part-Time Employees</h3>
+                <ul id="partTimeList">
+                    <!-- Part-time employees will be added here -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
